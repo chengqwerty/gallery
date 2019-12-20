@@ -124,6 +124,198 @@
           }
         }
       }
+    },
+    "make-gallery": {
+      "projectType": "library",
+      "root": "projects/make-gallery",
+      "sourceRoot": "projects/make-gallery/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/make-gallery/tsconfig.lib.json",
+            "project": "projects/make-gallery/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/make-gallery/src/test.ts",
+            "tsConfig": "projects/make-gallery/tsconfig.spec.json",
+            "karmaConfig": "projects/make-gallery/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/make-gallery/tsconfig.lib.json",
+              "projects/make-gallery/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "make-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/make-demo",
+      "sourceRoot": "projects/make-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/make-demo",
+            "index": "projects/make-demo/src/index.html",
+            "main": "projects/make-demo/src/main.ts",
+            "polyfills": "projects/make-demo/src/polyfills.ts",
+            "tsConfig": "projects/make-demo/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/make-demo/src/favicon.ico",
+              "projects/make-demo/src/assets"
+            ],
+            "styles": [
+              "projects/make-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/make-demo/src/environments/environment.ts",
+                  "with": "projects/make-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "make-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "make-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "make-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/make-demo/src/test.ts",
+            "polyfills": "projects/make-demo/src/polyfills.ts",
+            "tsConfig": "projects/make-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/make-demo/karma.conf.js",
+            "assets": [
+              "projects/make-demo/src/favicon.ico",
+              "projects/make-demo/src/assets"
+            ],
+            "styles": [
+              "projects/make-demo/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/make-demo/tsconfig.app.json",
+              "projects/make-demo/tsconfig.spec.json",
+              "projects/make-demo/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/make-demo/e2e/protractor.conf.js",
+            "devServerTarget": "make-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "make-demo:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "make-notice": {
+      "projectType": "library",
+      "root": "projects/make-notice",
+      "sourceRoot": "projects/make-notice/src",
+      "prefix": "make",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/make-notice/tsconfig.lib.json",
+            "project": "projects/make-notice/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/make-notice/src/test.ts",
+            "tsConfig": "projects/make-notice/tsconfig.spec.json",
+            "karmaConfig": "projects/make-notice/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/make-notice/tsconfig.lib.json",
+              "projects/make-notice/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "gallery"
 }

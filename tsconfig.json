@@ -17,7 +17,21 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "make-gallery": [
+        "dist/make-gallery"
+      ],
+      "make-gallery/*": [
+        "dist/make-gallery/*"
+      ],
+      "make-notice": [
+        "dist/make-notice"
+      ],
+      "make-notice/*": [
+        "dist/make-notice/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

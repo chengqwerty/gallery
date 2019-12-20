@@ -1,0 +1,9 @@
+<p>1</p>
+<p *ngFor="let abc of abcs">
+    {{abc.a}}
+</p>
+<div *ngFor="let notice of messages">
+    <p>{{notice.title}}</p>
+    <p>{{notice.type}}</p>
+</div>
+<button (click)="addMessage()"></button>
